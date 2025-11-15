@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ subcategory }} - {{ category }}</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f9f6ff;
+            color: #3a0070;
+            text-align: center;
+        }
+        .product {
+            display: inline-block;
+            margin: 20px;
+            border: 2px solid #d1b3ff;
+            border-radius: 12px;
+            padding: 10px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            width: 180px;
+            position: relative;
+        }
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .heart {
+            font-size: 24px;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            color: gray;
+            transition: 0.3s;
+        }
+        .heart.active {
+            color: red;
+        }
+        .buy {
+        background-colour:#6a0dad;
+        colour:white;
+        }
+       .cart {
+       background-colour:#ff4da6;
+       colour:white;
+       }
+
+    </style>
+</head>
+<body>
+
+<h1>{{ subcategory }} - {{ category }}</h1>
+
+{% for product in products %}
+<div class="product">
+
+    <a href="{{ url_for('product_page', category=category, subcategory=subcategory, product_id=product.id) }}">
+        <img src="{{ url_for('static', filename='images/' + product.image) }}" alt="{{ product.name }}">
+    </a>
+
+    <h3>{{ product.name }}</h3>
+    <p>₹{{ product.price }}</p>
+
+    <!-- SINGLE HEART ICON -->
+    <i class="fa fa-heart heart-icon 
+       {% if product.id in wishlist_ids %} active-heart {% endif %}"
+       onclick="toggleWishlist('{{ category }}', '{{ subcategory }}', {{ product.id }}, this)">
+    </i>
+
+</div>
+{% endfor %}
+
+<script>
+function toggleWishlist(category, subcategory, productId, element) {
+
+    fetch('/toggle_wishlist/' + category + '/' + subcategory + '/' + productId, {
+        method: "POST"
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        if (data.added) {
+            element.classList.add("active-heart");
+        } else {
+            element.classList.remove("active-heart");
+        }
+
+    });
+}
+</script>
+
+</body>
+</html>

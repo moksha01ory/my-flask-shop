@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Cart</title>
+    <style>
+        body {
+            font-family: Poppins, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .cart-item {
+            border: 2px solid #6a0dad;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px auto;
+            width: 80%;
+            background: #f8e6ff;
+        }
+        .empty {
+            color: #777;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Your Cart</h2>
+
+{% if cart and cart|length > 0 %}
+    {% for item in cart %}
+        <div class="cart-item">
+            <h3>{{ item.name }}</h3>
+            <p>₹{{ item.price }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p class="empty">Your cart is currently empty.</p>
+{% endif %}
+
+</body>
+</html>

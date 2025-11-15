@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vintage Velvet - Home</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f7eaff;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav .logo {
+            font-size: 30px;
+            font-weight: 600;
+            color: #4b145b;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin: 0 15px;
+            color: #4b145b;
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #7b2a91;
+        }
+
+        /* Hero Section */
+        .hero {
+            width: 100%;
+            height: 70vh;
+            background: url('{{ url_for("static", filename="images/banner.jpg") }}') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            padding-left: 1px;
+            color: white;
+            background-color: #4b145b; /* fallback color */
+        }
+
+        .hero-text h1 {
+            font-size: 50px;
+            margin-left: 40px;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            font-size: 22px;
+            margin-left: 40px;
+            opacity: 0.9;
+        }
+
+        .hero-text button {
+            padding: 12px 30px;
+            background: white;
+            color: #4b145b;
+            border: none;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+            margin-left:40px;
+        }
+
+        .hero-text button:hover {
+            background: #f2d4ff;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 32px;
+            color: #4b145b;
+            margin-bottom: 20px;
+        }
+
+        .category-row {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .category-box {
+            background: #ffffff;
+            width: 200px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.15);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .category-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .category-box img {
+            width: 100%;
+            height: 170px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .category-box p {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 500;
+            color: #4b145b;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Vintage Velvet</div>
+
+    <div>
+        <a href="{{ url_for('show_categories') }}">Categories</a>
+        <a href="{{ url_for('wishlist_page') }}">Wishlist</a>
+        <a href="{{ url_for('account') }}">Account</a>
+    </div>
+</nav>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <div class="hero-text">
+        <h1>Discover Your Style</h1>
+        <p>Shop the latest fashion trends with elegance & comfort.</p>
+        <button onclick="window.location.href='{{ url_for('show_categories') }}'">Shop Now</button>
+    </div>
+</div>
+
+<!-- CATEGORIES SECTION -->
+<div class="categories">
+    <h2>Shop by Category</h2>
+
+    <div class="category-row">
+        <div class="category-box" onclick="window.location.href='/categories/Men/Shirts'">
+            <img src="{{ url_for('static', filename='images/mshirt-1.JPEG') }}">
+            <p>Men</p>
+        </div>
+
+        <div class="category-box" onclick="window.location.href='/categories/Women/Kurtis'">
+            <img src="{{ url_for('static', filename='images/wkurti-1.JPG') }}">
+            <p>Women</p>
+        </div>
+
+        <div class="category-box" onclick="window.location.href='/categories/Kids/T-Shirts'">
+            <img src="{{ url_for('static', filename='images/T-shirt-1.JPEG') }}">
+            <p>Kids</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

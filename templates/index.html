@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vintage Velvet</title>
+    <style>
+        body {
+            background-color: #800080; /* purple */
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #4B0082;
+            padding: 10px;
+        }
+        footer a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vintage Velvet</h1>
+    <h3>Categories</h3>
+    <img src="{{ url_for('static', filename='images/Shoe.jpg') }}" width="200">
+    <img src="{{ url_for('static', filename='images/Kurti.jpg') }}" width="200">
+    <img src="{{ url_for('static', filename='images/Watch.jpg') }}" width="200">
+
+    <footer>
+        <a href="{{ url_for('home') }}">Account</a>
+        <a href="{{ url_for('home') }}">Categories</a>
+        <a href="{{ url_for('home') }}">Orders</a>
+    </footer>
+</body>
+</html>
+<h2>Categories</h2>
+<ul>
+  {% for category in categories %}
+    <li><strong>{{ category.name }}</strong>
+      <ul>
+        {% for sub in category.subcategories %}
+          <li>{{ sub }}</li>
+        {% endfor %}
+      </ul>
+    </li>
+  {% endfor %}
+</ul>
+
+<h2>Products</h2>
+<div>
+  {% for product in products %}
+    <div>
+      <img src="{{ url_for('static', filename=product.image) }}" width="150">
+      <p>{{ product.name }} - ₹{{ product.price }}</p>
+      <p>{{ product.description }}</p>
+    </div>
+  {% endfor %}
+</div>

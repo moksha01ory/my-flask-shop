@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #faf5ff;
+        font-family: 'Poppins', sans-serif;
+        color: #4b0082;
+    }
+
+    .category-row {
+        display: flex;
+        align-items: center;
+        margin: 30px auto;
+        width: 90%;
+        padding: 15px;
+        border-bottom: 2px solid #e5d4ff;
+    }
+
+    .category-title {
+        width: 20%;
+        font-size: 26px;
+        font-family: 'Playfair Display', serif;
+        font-weight: bold;
+        color: #3a005f;
+    }
+
+    .sub-list {
+        width: 80%;
+        display: flex;
+        gap: 20px;
+    }
+
+    .subcircle {
+        width: 90px;
+        height: 90px;
+        background: white;
+        border: 2px solid #c9a7ff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        transition: 0.2s;
+        box-shadow: 0px 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .subcircle:hover {
+        background-color: #eee0ff;
+        transform: scale(1.05);
+    }
+</style>
+
+<h2 style="text-align:center; font-family:'Playfair Display', serif; color:#4b0082;">Shop by Category</h2>
+
+<!-- MEN -->
+<div class="category-row">
+    <div class="category-title">Men</div>
+    <div class="sub-list">
+        <a href="{{ url_for('show_subcategory', category='Men', subcategory='Shirts') }}">
+            <div class="subcircle">Shirts</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Men', subcategory='Pants') }}">
+            <div class="subcircle">Pants</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Men', subcategory='Shoes') }}">
+            <div class="subcircle">Shoes</div>
+        </a>
+    </div>
+</div>
+
+<!-- WOMEN -->
+<div class="category-row">
+    <div class="category-title">Women</div>
+    <div class="sub-list">
+        <a href="{{ url_for('show_subcategory', category='Women', subcategory='Kurtis') }}">
+            <div class="subcircle">Kurtis</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Women', subcategory='Dresses') }}">
+            <div class="subcircle">Dresses</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Women', subcategory='Handbags') }}">
+            <div class="subcircle">Handbags</div>
+        </a>
+    </div>
+</div>
+
+<!-- KIDS -->
+<div class="category-row">
+    <div class="category-title">Kids</div>
+    <div class="sub-list">
+        <a href="{{ url_for('show_subcategory', category='Kids', subcategory='T-Shirts') }}">
+            <div class="subcircle">T-Shirts</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Kids', subcategory='Shorts') }}">
+            <div class="subcircle">Shorts</div>
+        </a>
+        <a href="{{ url_for('show_subcategory', category='Kids', subcategory='Shoes') }}">
+            <div class="subcircle">Shoes</div>
+        </a>
+    </div>
+</div>
+
+{% endblock %}

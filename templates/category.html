@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Categories - Vintage Velvet</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f0ff;
+            text-align: center;
+            color: #4b0082;
+        }
+        header {
+            background-color: #800080;
+            color: white;
+            padding: 25px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .category {
+            background: #e6d4f7;
+            margin: 30px auto;
+            padding: 20px;
+            width: 60%;
+            border-radius: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        .category h2 {
+            color: #800080;
+        }
+        .subcategory {
+            list-style-type: none;
+            padding: 0;
+        }
+        .subcategory li {
+            background: #f0e1ff;
+            margin: 10px auto;
+            width: 50%;
+            padding: 10px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        .subcategory li:hover {
+            background-color: #d5b3f0;
+        }
+        footer {
+            background-color: #800080;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        footer a {
+            color: white;
+            text-decoration: none;
+            margin: 0 25px;
+            font-size: 18px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<header>Categories</header>
+<div class="category">
+    <h2>Men</h2>
+    <ul>
+        <li><a href="{{ url_for('show_subcategory', category_name='Men', sub_name='Shirts') }}">Shirts</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Men', sub_name='Pants') }}">Pants</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Men', sub_name='Shoes') }}">Shoes</a></li>
+    </ul>
+</div>
+
+<div class="category">
+    <h2>Women</h2>
+    <ul>
+        <li><a href="{{ url_for('show_subcategory', category_name='Women', sub_name='Kurtis') }}">Kurtis</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Women', sub_name='Dresses') }}">Dresses</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Women', sub_name='Handbags') }}">Handbags</a></li>
+    </ul>
+</div>
+
+<div class="category">
+    <h2>Kids</h2>
+    <ul>
+        <li><a href="{{ url_for('show_subcategory', category_name='Kids', sub_name='T-Shirts') }}">T-Shirts</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Kids', sub_name='Shorts') }}">Shorts</a></li>
+        <li><a href="{{ url_for('show_subcategory', category_name='Kids', sub_name='Shoes') }}">Shoes</a></li>
+    </ul>
+</div>
+<footer>
+    <a href="{{ url_for('home') }}">Home</a>
+    <a href="{{ url_for('account') }}">Account</a>
+    <a href="{{ url_for('orders') }}">Orders</a>
+</footer>
+
+</body>
+</html>
